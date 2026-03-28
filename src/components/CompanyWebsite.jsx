@@ -269,16 +269,19 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
   );
   const socialLinks = [
     {
+      platform: "instagram",
       label: "Instagram",
       href: "https://www.instagram.com/pratikmore4133?igsh=MWxidDNxMGRzaHVk",
       icon: <InstagramIcon />,
     },
     {
+      platform: "facebook",
       label: "Facebook",
       href: "https://www.facebook.com/share/178Bs6e9r2/",
       icon: <FacebookIcon />,
     },
     {
+      platform: "youtube",
       label: "YouTube",
       href: "",
       icon: <YouTubeIcon />,
@@ -636,6 +639,7 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
                 <a
                   key={item.label}
                   className="website-social-link"
+                  data-platform={item.platform}
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
@@ -649,6 +653,7 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
                 <div
                   key={item.label}
                   className="website-social-link is-disabled"
+                  data-platform={item.platform}
                   aria-label={`${item.label} coming soon`}
                   title={`${item.label} coming soon`}
                 >

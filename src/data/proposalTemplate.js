@@ -4,20 +4,20 @@ export const proposalTemplate = {
     proposalTitle: "Client Proposal",
     systemSize: "3.5 kW",
     proposalDate: "2026-03-11",
-    refNo: "DSS-CN-260311",
+    refNo: "DIES-CN-260311",
     subject:
       "Proposal for supply, installation, and commissioning of a grid-connected rooftop solar power system.",
     coverHeadline: "Clean Energy, Lower Bills, Smarter Solar Investment",
     coverSubheadline:
       "Trusted rooftop solar solutions for reliable electricity savings, clean energy generation, and long-term performance.",
-    coverBadge: "Deshmukh Solar Systems",
+    coverBadge: "Deshmukh Infra & Energy Solutions",
   },
   customer: {
     name: "Client Name",
     location: "Client Address, Maharashtra",
   },
   supplier: {
-    companyName: "Deshmukh Solar Systems",
+    companyName: "Deshmukh Infra & Energy Solutions",
     contactPerson: "Pratik Deshmukh",
     phone: "7743935692",
     email: "deshmukhsolarsystems@gmail.com",
@@ -43,7 +43,7 @@ export const proposalTemplate = {
   companyProfile: {
     heroTitle: "One Partner for Solar, Access, Mobility, and Infrastructure",
     heroCopy:
-      "Deshmukh Solar Systems supports rooftop solar, elevator works, road marking, and travel coordination with dependable field execution and responsive service.",
+      "Deshmukh Infra & Energy Solutions supports rooftop solar, elevator works, road marking, and travel coordination with dependable field execution and responsive service.",
     ownerTitle: "Founder & Operations Lead",
     ownerSummary:
       "Pratik Deshmukh leads the business with a hands-on execution model focused on transparent delivery, responsive support, and long-term client relationships.",
@@ -54,7 +54,7 @@ export const proposalTemplate = {
       {
         year: "2022",
         title: "Company Established",
-        copy: "Deshmukh Solar Systems was established with a service-driven approach focused on quality execution and customer trust.",
+        copy: "Deshmukh Infra & Energy Solutions was established with a service-driven approach focused on quality execution and customer trust.",
       },
       {
         year: "2023",

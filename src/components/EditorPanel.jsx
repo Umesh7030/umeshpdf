@@ -109,7 +109,7 @@ const buildProposalReference = (customerName, proposalDate) => {
     .join("");
   const dateToken = proposalDate ? proposalDate.replaceAll("-", "").slice(2) : "000000";
 
-  return `DSS-${initials || "CL"}-${dateToken || "000000"}`;
+  return `DIES-${initials || "CL"}-${dateToken || "000000"}`;
 };
 
 const buildProposalSubject = (systemSize) =>
@@ -294,7 +294,7 @@ export default function EditorPanel({
       <div className="editor-header">
         <div>
           <p className="eyebrow">Assistant Editor</p>
-          <h1>Deshmukh Solar Proposal Studio</h1>
+          <h1>Deshmukh Infra &amp; Energy Solutions Proposal Studio</h1>
           <p className="editor-copy">
             Only client and estimate fields are editable here. Company details,
             payment details, and terms stay locked so your assistant can work safely.

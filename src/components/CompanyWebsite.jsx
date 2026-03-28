@@ -65,16 +65,6 @@ function WebsiteBackground() {
   );
 }
 
-function getCompanyInitials(name) {
-  return (name || "DS")
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0])
-    .join("")
-    .toUpperCase();
-}
-
 function matchesSearch(values, query) {
   if (!query) {
     return false;
@@ -169,7 +159,6 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
   const heroServiceLabels = Object.fromEntries(
     companyProfile.services.map((service) => [service.accent, service.shortLabel]),
   );
-  const companyInitials = getCompanyInitials(supplier.companyName);
   const normalizedSearch = searchQuery.trim().toLowerCase();
   const searchTargets = [
     {
@@ -300,9 +289,21 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
       <header className="website-topbar">
         <div className="website-topbar-main">
           <a className="website-brand" href="#top">
-            <div className="website-brand-mark">{companyInitials}</div>
+            <div className="website-brand-mark" aria-hidden="true">
+              <div className="website-brand-mark-sun" />
+              <div className="website-brand-mark-rays">
+                <span />
+                <span />
+                <span />
+              </div>
+              <div className="website-brand-mark-panel">
+                <span />
+                <span />
+                <span />
+                <span />
+              </div>
+            </div>
             <div className="website-brand-copy">
-              <strong>Company Website</strong>
               <p>{supplier.companyName}</p>
               <span>{supplier.serviceCoverage}</span>
             </div>
@@ -379,7 +380,6 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
       <main className="website-main">
         <section className="website-hero">
           <div className="website-hero-copy">
-            <p className="website-hero-eyebrow">Company Website</p>
             <h1>{companyProfile.heroTitle}</h1>
             <p className="website-hero-copy-text">{companyProfile.heroCopy}</p>
 

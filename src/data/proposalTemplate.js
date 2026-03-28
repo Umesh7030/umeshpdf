@@ -41,9 +41,9 @@ export const proposalTemplate = {
     branch: "Kalyani Nagar Branch",
   },
   companyProfile: {
-    heroTitle: "Integrated Services for Solar, Mobility, Access, and Infrastructure",
+    heroTitle: "One Partner for Solar, Access, Mobility, and Infrastructure",
     heroCopy:
-      "Deshmukh Solar Systems delivers practical field execution across rooftop solar, elevator installation, road marking, and travel support with a strong service-first approach.",
+      "Deshmukh Solar Systems supports rooftop solar, elevator works, road marking, and travel coordination with dependable field execution and responsive service.",
     ownerTitle: "Founder & Operations Lead",
     ownerSummary:
       "Pratik Deshmukh leads the business with a hands-on execution model focused on transparent delivery, responsive support, and long-term client relationships.",

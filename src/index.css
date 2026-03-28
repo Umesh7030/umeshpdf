@@ -1236,40 +1236,203 @@ button {
 }
 
 .website-shell {
+  --website-copy-size: 1rem;
+  --website-copy-line-height: 1.68;
+  --website-hero-title-size: clamp(3.1rem, 5.1vw, 4.15rem);
+  --website-section-title-size: clamp(2rem, 2.7vw, 2.45rem);
+  --website-card-title-size: clamp(1.22rem, 1.55vw, 1.38rem);
+  --website-cta-title-size: clamp(2rem, 2.6vw, 2.3rem);
+  position: relative;
   min-height: 100vh;
   padding: 20px;
+  overflow-x: clip;
+  background:
+    radial-gradient(circle at top left, rgba(255, 205, 114, 0.16), transparent 22%),
+    linear-gradient(180deg, #f8f3ec 0%, #eef5ff 48%, #f7fbff 100%);
+}
+
+.website-background {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.website-background-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(12px);
+  opacity: 0.52;
+}
+
+.website-background-glow-solar {
+  top: -120px;
+  right: -80px;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(255, 204, 118, 0.42) 0%, transparent 66%);
+  animation: driftGlow 18s ease-in-out infinite;
+}
+
+.website-background-glow-elevator {
+  left: -120px;
+  bottom: 80px;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(28, 79, 146, 0.18) 0%, transparent 68%);
+  animation: driftGlowReverse 22s ease-in-out infinite;
+}
+
+.website-background-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(28, 79, 146, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 79, 146, 0.05) 1px, transparent 1px);
+  background-size: 120px 120px;
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.52) 16%, rgba(0, 0, 0, 0.52) 84%, transparent 100%);
+  animation: backgroundGridShift 20s linear infinite;
+}
+
+.website-background-solar,
+.website-background-elevator {
+  position: absolute;
+  opacity: 0.3;
+}
+
+.website-background-solar {
+  top: 10%;
+  right: -110px;
+  width: 420px;
+  height: 280px;
+  animation: floatBackground 12s ease-in-out infinite;
+}
+
+.website-background-sun {
+  position: absolute;
+  top: 8px;
+  left: 38px;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 214, 122, 0.82) 0%, rgba(247, 170, 55, 0.82) 72%);
+  box-shadow: 0 0 0 18px rgba(255, 208, 102, 0.16);
+  animation: pulseWarm 4s ease-in-out infinite;
+}
+
+.website-background-panel-bank {
+  position: absolute;
+  right: 18px;
+  bottom: 0;
+  display: grid;
+  gap: 18px;
+}
+
+.website-background-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 16px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(29, 77, 140, 0.94) 0%, rgba(21, 54, 95, 0.94) 100%);
+  box-shadow: 0 20px 40px rgba(21, 54, 95, 0.16);
+  transform: skew(-16deg);
+}
+
+.website-background-panel.secondary {
+  width: 190px;
+  justify-self: end;
+  opacity: 0.72;
+}
+
+.website-background-panel span {
+  display: block;
+  width: 48px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.website-background-elevator {
+  left: -26px;
+  bottom: 8%;
+  width: 220px;
+  height: 420px;
+  animation: floatBackgroundReverse 14s ease-in-out infinite;
+}
+
+.website-background-elevator-shaft {
+  position: absolute;
+  inset: 0;
+  border-radius: 40px;
+  background: linear-gradient(180deg, rgba(20, 53, 96, 0.08) 0%, rgba(20, 53, 96, 0.22) 100%);
+  border: 1px solid rgba(28, 79, 146, 0.12);
+}
+
+.website-background-elevator-cabin {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  top: 32px;
+  height: 96px;
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(24, 61, 112, 0.9) 0%, rgba(47, 116, 188, 0.9) 100%);
+  box-shadow: 0 18px 32px rgba(24, 61, 112, 0.18);
+  animation: backgroundElevatorRide 6s ease-in-out infinite;
 }
 
 .website-topbar {
   position: sticky;
   top: 16px;
   z-index: 40;
+  display: grid;
+  gap: 14px;
+  max-width: 1380px;
+  margin: 0 auto 18px;
+  padding: 16px 18px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(216, 223, 234, 0.9);
+  box-shadow: 0 18px 34px rgba(16, 37, 66, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.website-topbar-main,
+.website-topbar-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  max-width: 1380px;
-  margin: 0 auto 18px;
-  padding: 14px 18px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(216, 223, 234, 0.9);
-  box-shadow: 0 18px 34px rgba(16, 37, 66, 0.12);
-  backdrop-filter: blur(16px);
+}
+
+.website-topbar-nav {
+  padding-top: 14px;
+  border-top: 1px solid rgba(216, 223, 234, 0.9);
+}
+
+.website-topbar-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .website-brand {
   display: flex;
   align-items: center;
   gap: 14px;
+  color: inherit;
+  text-decoration: none;
 }
 
 .website-brand-mark {
   display: grid;
   place-items: center;
-  width: 54px;
-  height: 54px;
-  border-radius: 18px;
+  width: 58px;
+  height: 58px;
+  border-radius: 20px;
   background:
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.26), transparent 38%),
     linear-gradient(135deg, #163d70 0%, #289b64 100%);
@@ -1280,19 +1443,180 @@ button {
   letter-spacing: 0.08em;
 }
 
-.website-brand p,
-.website-brand span {
+.website-brand-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.website-brand-copy strong,
+.website-brand-copy p,
+.website-brand-copy span {
   margin: 0;
 }
 
-.website-brand p {
+.website-brand-copy strong {
+  color: var(--accent-deep);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.website-brand-copy p {
   color: var(--brand);
+  font-size: 1.08rem;
   font-weight: 800;
 }
 
-.website-brand span {
+.website-brand-copy span {
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.website-toolbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.website-search {
+  position: relative;
+}
+
+.website-search-toggle,
+.website-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.website-search-toggle {
+  width: 44px;
+  padding: 0;
+  border: 1px solid rgba(16, 37, 66, 0.12);
+  background: rgba(247, 250, 255, 0.92);
+  color: #163862;
+  box-shadow: 0 12px 20px rgba(16, 37, 66, 0.08);
+}
+
+.website-search-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.website-search-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 3;
+  width: min(360px, calc(100vw - 52px));
+  padding: 14px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(216, 223, 234, 0.92);
+  box-shadow: 0 24px 42px rgba(16, 37, 66, 0.16);
+  backdrop-filter: blur(16px);
+}
+
+.website-search-field {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: #f7fbff;
+  border: 1px solid rgba(216, 223, 234, 0.9);
+}
+
+.website-search-field svg {
+  width: 20px;
+  height: 20px;
+  color: #5b7699;
+}
+
+.website-search-field input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #163862;
+  font: inherit;
+}
+
+.website-search-results {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.website-search-result {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(216, 223, 234, 0.86);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  color: #163862;
+  text-align: left;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.website-search-result:hover,
+.website-search-toggle:hover,
+.website-nav-cta:hover {
+  transform: translateY(-1px);
+}
+
+.website-search-result:hover {
+  border-color: rgba(242, 140, 40, 0.34);
+  box-shadow: 0 14px 24px rgba(16, 37, 66, 0.08);
+}
+
+.website-search-result span,
+.website-search-empty {
+  color: var(--accent-deep);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.website-search-result strong {
+  font-size: 0.98rem;
+}
+
+.website-search-result small {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.website-search-empty {
+  margin: 6px 2px 0;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.website-nav-cta {
+  padding: 0 18px;
+  border: 0;
+  background: linear-gradient(135deg, #f59b34 0%, #ffbf68 100%);
+  color: #102542;
+  box-shadow: 0 16px 24px rgba(245, 155, 52, 0.22);
 }
 
 .website-nav {
@@ -1303,22 +1627,35 @@ button {
 }
 
 .website-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--ink);
   text-decoration: none;
+  font-size: 0.95rem;
   font-weight: 700;
-  padding: 10px 12px;
-  border-radius: 14px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(247, 250, 255, 0.92);
+  border: 1px solid rgba(216, 223, 234, 0.9);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
 }
 
 .website-nav a:hover {
   background: rgba(28, 79, 146, 0.08);
+  border-color: rgba(28, 79, 146, 0.16);
 }
 
-.website-cta {
-  min-width: 170px;
+.website-search-target {
+  scroll-margin-top: 150px;
 }
 
 .website-main {
+  position: relative;
+  z-index: 1;
   max-width: 1380px;
   margin: 0 auto;
 }
@@ -1326,58 +1663,65 @@ button {
 .website-hero {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(320px, 520px);
-  gap: 28px;
-  padding: 36px 10px 12px;
+  gap: 24px;
+  padding: 28px 10px 12px;
 }
 
 .website-hero-copy {
-  padding: 22px 10px 10px 0;
+  padding: 18px 8px 10px 0;
 }
 
 .website-hero-eyebrow {
   display: inline-flex;
   align-items: center;
-  margin: 0 0 18px;
-  padding: 10px 14px;
+  margin: 0 0 16px;
+  padding: 9px 13px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.84);
   color: var(--accent-deep);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .website-hero h1 {
   margin: 0;
-  max-width: 700px;
+  max-width: 660px;
   font-family: var(--font-display);
-  font-size: 4.75rem;
-  line-height: 0.92;
-  letter-spacing: -0.05em;
+  font-size: var(--website-hero-title-size);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
   color: #143764;
+  text-wrap: balance;
 }
 
 .website-hero-copy-text {
-  max-width: 640px;
-  margin: 20px 0 0;
+  max-width: 620px;
+  margin: 18px 0 0;
   color: var(--muted);
-  font-size: 1.12rem;
-  line-height: 1.78;
+  font-size: var(--website-copy-size);
+  line-height: var(--website-copy-line-height);
 }
 
-.website-hero-actions {
+.website-hero-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 28px;
+  gap: 10px;
+  margin-top: 24px;
 }
 
-.website-link-button {
+.website-hero-tags span {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(216, 223, 234, 0.9);
+  color: #163862;
+  font-size: 0.84rem;
+  font-weight: 700;
+  box-shadow: 0 12px 20px rgba(16, 37, 66, 0.06);
 }
 
 .website-stat-grid {
@@ -1409,12 +1753,17 @@ button {
   margin-top: 10px;
   color: #163862;
   font-family: var(--font-display);
-  font-size: 1.18rem;
+  font-size: 1.08rem;
   line-height: 1.3;
 }
 
 .website-hero-visual {
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 20px;
+  align-content: center;
+  padding: 28px;
   min-height: 620px;
   border-radius: 36px;
   background:
@@ -1424,6 +1773,7 @@ button {
   border: 1px solid rgba(216, 223, 234, 0.9);
   box-shadow: 0 24px 48px rgba(16, 37, 66, 0.12);
   overflow: hidden;
+  isolation: isolate;
 }
 
 .hero-orbit {
@@ -1449,89 +1799,114 @@ button {
 }
 
 .hero-visual-card {
-  position: absolute;
+  position: relative;
+  z-index: 1;
+  width: 100%;
   border-radius: 28px;
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(216, 223, 234, 0.86);
   box-shadow: 0 20px 40px rgba(16, 37, 66, 0.12);
+  overflow: hidden;
+}
+
+.hero-card-name {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(216, 223, 234, 0.92);
+  box-shadow: 0 10px 20px rgba(16, 37, 66, 0.08);
+  color: #163862;
+  max-width: calc(100% - 28px);
+  font-size: clamp(0.58rem, 1.15vw, 0.72rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .hero-solar-card {
-  top: 42px;
-  left: 38px;
-  width: 230px;
-  height: 190px;
-  padding: 24px;
+  align-self: start;
+  justify-self: start;
+  max-width: 220px;
+  min-height: 184px;
+  padding: 62px 24px 24px;
 }
 
 .hero-solar-sun {
-  width: 62px;
-  height: 62px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   background: radial-gradient(circle, #ffd474 0%, #f7aa37 70%);
-  box-shadow: 0 0 0 10px rgba(255, 208, 102, 0.16);
+  box-shadow: 0 0 0 8px rgba(255, 208, 102, 0.16);
   animation: pulseWarm 3.6s ease-in-out infinite;
 }
 
 .hero-solar-panel {
   position: absolute;
-  right: 26px;
-  bottom: 28px;
+  right: 22px;
+  bottom: 22px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 6px;
-  width: 116px;
-  padding: 10px;
-  border-radius: 16px;
+  gap: 5px;
+  width: min(112px, calc(100% - 44px));
+  padding: 9px;
+  border-radius: 14px;
   background: linear-gradient(180deg, #1d4d8c 0%, #15365f 100%);
   transform: skew(-10deg);
 }
 
 .hero-solar-panel span {
   display: block;
-  height: 24px;
+  height: 20px;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.18);
 }
 
 .hero-elevator-card {
-  top: 104px;
-  right: 40px;
-  width: 170px;
-  height: 258px;
-  padding: 18px;
+  align-self: center;
+  justify-self: end;
+  max-width: 160px;
+  min-height: 236px;
+  margin-top: 20px;
 }
 
 .hero-elevator-shaft {
   position: absolute;
-  inset: 18px;
+  inset: 50px 18px 18px;
   border-radius: 18px;
   background: linear-gradient(180deg, rgba(20, 53, 96, 0.08) 0%, rgba(20, 53, 96, 0.18) 100%);
 }
 
 .hero-elevator-cabin {
   position: absolute;
-  left: 32px;
-  right: 32px;
-  height: 58px;
+  top: 58px;
+  left: 30px;
+  right: 30px;
+  height: 54px;
   border-radius: 16px;
   background: linear-gradient(180deg, #183d70 0%, #2f74bc 100%);
   box-shadow: 0 12px 24px rgba(24, 61, 112, 0.22);
-  animation: elevatorMove 4.8s ease-in-out infinite;
+  animation: elevatorGlide 4.8s ease-in-out infinite;
 }
 
 .hero-road-card {
-  left: 76px;
-  bottom: 48px;
-  width: 260px;
-  height: 136px;
-  padding: 18px;
+  align-self: end;
+  justify-self: start;
+  max-width: 228px;
+  min-height: 128px;
+  margin-left: 18px;
 }
 
 .hero-road-surface {
   position: absolute;
-  inset: 28px 18px;
-  border-radius: 22px;
+  inset: 50px 18px 18px;
+  border-radius: 20px;
   background: linear-gradient(180deg, #143764 0%, #204f87 100%);
 }
 
@@ -1541,35 +1916,34 @@ button {
   height: 50px;
   border-radius: 999px;
   background: linear-gradient(180deg, #ffd063 0%, #fff1b2 100%);
-  top: 44px;
+  top: 60px;
   animation: roadBlink 2.6s ease-in-out infinite;
 }
 
 .hero-road-mark-a {
-  left: 84px;
+  left: calc(36% - 9px);
 }
 
 .hero-road-mark-b {
-  left: 126px;
+  left: calc(50% - 9px);
   animation-delay: 0.3s;
 }
 
 .hero-road-mark-c {
-  left: 168px;
+  left: calc(64% - 9px);
   animation-delay: 0.6s;
 }
 
 .hero-travel-card {
-  right: 64px;
-  bottom: 46px;
-  width: 170px;
-  height: 150px;
-  padding: 20px;
+  align-self: end;
+  justify-self: end;
+  max-width: 160px;
+  min-height: 144px;
 }
 
 .hero-route {
   position: absolute;
-  inset: 28px 24px;
+  inset: 50px 24px 20px;
   border-radius: 999px;
   border: 3px dashed rgba(42, 153, 106, 0.45);
 }
@@ -1585,12 +1959,12 @@ button {
 
 .hero-route-dot-a {
   left: 30px;
-  top: 44px;
+  top: 58px;
 }
 
 .hero-route-dot-b {
   right: 34px;
-  top: 62px;
+  top: 74px;
   animation: floatDot 3.6s ease-in-out infinite;
 }
 
@@ -1634,7 +2008,7 @@ button {
   min-width: 0;
   color: #143764;
   font-family: var(--font-display);
-  font-size: clamp(0.96rem, 1.1vw, 1.2rem);
+  font-size: clamp(0.94rem, 1vw, 1.12rem);
   line-height: 1.28;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -1655,6 +2029,16 @@ button {
   box-shadow: 0 18px 36px rgba(16, 37, 66, 0.08);
 }
 
+.website-section.is-highlighted,
+.about-card.is-highlighted,
+.service-card.is-highlighted,
+.history-card.is-highlighted {
+  border-color: rgba(242, 140, 40, 0.42);
+  box-shadow:
+    0 0 0 1px rgba(242, 140, 40, 0.12),
+    0 22px 38px rgba(16, 37, 66, 0.1);
+}
+
 .site-section-heading span {
   display: inline-flex;
   margin-bottom: 12px;
@@ -1670,15 +2054,17 @@ button {
   max-width: 760px;
   color: #143764;
   font-family: var(--font-display);
-  font-size: 2.9rem;
-  line-height: 0.98;
+  font-size: var(--website-section-title-size);
+  line-height: 1.02;
+  text-wrap: balance;
 }
 
 .site-section-heading p {
   max-width: 760px;
   margin: 16px 0 0;
   color: var(--muted);
-  line-height: 1.76;
+  font-size: 0.98rem;
+  line-height: var(--website-copy-line-height);
 }
 
 .about-grid {
@@ -1699,14 +2085,15 @@ button {
   margin: 0;
   color: #143764;
   font-family: var(--font-display);
-  font-size: 2rem;
-  line-height: 1.04;
+  font-size: clamp(1.45rem, 2vw, 1.74rem);
+  line-height: 1.1;
 }
 
 .about-card p {
   margin: 16px 0 0;
   color: var(--muted);
-  line-height: 1.78;
+  font-size: 0.98rem;
+  line-height: var(--website-copy-line-height);
 }
 
 .about-service-line {
@@ -1780,14 +2167,15 @@ button {
   margin: 12px 0 0;
   color: #143764;
   font-family: var(--font-display);
-  font-size: 1.5rem;
-  line-height: 1.08;
+  font-size: var(--website-card-title-size);
+  line-height: 1.14;
 }
 
 .service-card p {
   margin: 14px 0 0;
   color: var(--muted);
-  line-height: 1.72;
+  font-size: 0.95rem;
+  line-height: 1.64;
 }
 
 .service-motion {
@@ -1936,14 +2324,15 @@ button {
   margin: 16px 0 0;
   color: #143764;
   font-family: var(--font-display);
-  font-size: 1.45rem;
-  line-height: 1.1;
+  font-size: var(--website-card-title-size);
+  line-height: 1.14;
 }
 
 .history-card p {
   margin: 14px 0 0;
   color: var(--muted);
-  line-height: 1.72;
+  font-size: 0.95rem;
+  line-height: 1.64;
 }
 
 .website-cta-panel {
@@ -1974,21 +2363,30 @@ button {
   margin: 14px 0 0;
   max-width: 780px;
   font-family: var(--font-display);
-  font-size: 2.7rem;
-  line-height: 0.98;
+  font-size: var(--website-cta-title-size);
+  line-height: 1.04;
+  text-wrap: balance;
 }
 
 .website-cta-panel p {
   max-width: 760px;
   margin: 16px 0 0;
   color: rgba(240, 246, 255, 0.82);
-  line-height: 1.7;
+  font-size: 0.98rem;
+  line-height: 1.64;
 }
 
-.website-cta-panel .primary-button {
-  min-width: 220px;
-  min-height: 56px;
-  background: linear-gradient(135deg, #ffffff 0%, #fef0da 100%);
+.website-cta-note {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 18px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 700;
 }
 
 @keyframes spinSlow {
@@ -2019,13 +2417,13 @@ button {
   }
 }
 
-@keyframes elevatorMove {
+@keyframes elevatorGlide {
   0%,
   100% {
-    top: 166px;
+    transform: translateY(74px);
   }
   50% {
-    top: 52px;
+    transform: translateY(0);
   }
 }
 
@@ -2061,6 +2459,65 @@ button {
   }
 }
 
+@keyframes backgroundGridShift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-60px, -40px, 0);
+  }
+}
+
+@keyframes floatBackground {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+  50% {
+    transform: translateY(18px) rotate(-12deg);
+  }
+}
+
+@keyframes floatBackgroundReverse {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+@keyframes driftGlow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-18px, 24px, 0);
+  }
+}
+
+@keyframes driftGlowReverse {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(24px, -18px, 0);
+  }
+}
+
+@keyframes backgroundElevatorRide {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(210px);
+  }
+}
+
 @media (max-width: 1380px) {
   .app-shell {
     grid-template-columns: 1fr;
@@ -2081,6 +2538,18 @@ button {
 
   .website-hero-visual {
     min-height: 520px;
+  }
+
+  .website-background-solar {
+    top: 12%;
+    right: -150px;
+    width: 360px;
+  }
+
+  .website-background-elevator {
+    left: -48px;
+    width: 180px;
+    height: 360px;
   }
 
   .website-banner,
@@ -2106,19 +2575,55 @@ button {
 
   .website-topbar {
     top: 10px;
-    flex-direction: column;
-    align-items: stretch;
     padding: 14px;
   }
 
-  .website-nav {
-    justify-content: stretch;
+  .website-topbar-main,
+  .website-topbar-nav {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .website-nav a,
-  .website-cta {
+  .website-toolbar {
+    justify-content: space-between;
+  }
+
+  .website-search {
     flex: 1 1 auto;
+  }
+
+  .website-search-panel {
+    position: static;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .website-topbar-note {
+    display: none;
+  }
+
+  .website-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .website-nav a {
     text-align: center;
+  }
+
+  .website-background-solar {
+    top: 14%;
+    right: -180px;
+    width: 300px;
+    opacity: 0.22;
+  }
+
+  .website-background-elevator {
+    left: -60px;
+    bottom: 10%;
+    width: 150px;
+    height: 300px;
+    opacity: 0.2;
   }
 
   .website-hero {
@@ -2126,7 +2631,11 @@ button {
   }
 
   .website-hero h1 {
-    font-size: 3.3rem;
+    font-size: 3rem;
+  }
+
+  .website-hero-visual {
+    min-height: 460px;
   }
 
   .website-stat-grid,
@@ -2144,32 +2653,7 @@ button {
 
   .site-section-heading h2,
   .website-cta-panel h2 {
-    font-size: 2.15rem;
-  }
-
-  .website-hero-visual {
-    min-height: 420px;
-  }
-
-  .hero-solar-card {
-    top: 22px;
-    left: 22px;
-  }
-
-  .hero-elevator-card {
-    top: 84px;
-    right: 20px;
-  }
-
-  .hero-road-card {
-    left: 24px;
-    bottom: 28px;
-    width: 220px;
-  }
-
-  .hero-travel-card {
-    right: 20px;
-    bottom: 24px;
+    font-size: 1.95rem;
   }
 
   .estimator-shell {
@@ -2276,8 +2760,55 @@ button {
 }
 
 @media (max-width: 860px) {
+  .website-brand {
+    align-items: flex-start;
+  }
+
+  .website-brand-mark {
+    width: 52px;
+    height: 52px;
+    border-radius: 18px;
+  }
+
+  .website-brand-copy p {
+    font-size: 1rem;
+  }
+
+  .website-nav-cta {
+    padding: 0 14px;
+    font-size: 0.84rem;
+  }
+
+  .website-background-solar {
+    top: 18%;
+    right: -180px;
+    width: 250px;
+  }
+
+  .website-background-panel {
+    gap: 6px;
+    padding: 12px;
+  }
+
+  .website-background-panel span {
+    width: 34px;
+    height: 22px;
+  }
+
+  .website-background-elevator {
+    left: -52px;
+    width: 120px;
+    height: 250px;
+  }
+
+  .website-background-elevator-cabin {
+    left: 20px;
+    right: 20px;
+    height: 72px;
+  }
+
   .website-hero h1 {
-    font-size: 2.75rem;
+    font-size: 2.45rem;
   }
 
   .website-hero-copy-text,
@@ -2290,28 +2821,120 @@ button {
 
   .website-hero-visual {
     min-height: 360px;
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .website-hero-tags span {
+    padding: 8px 12px;
+    font-size: 0.8rem;
   }
 
   .hero-solar-card {
-    width: 180px;
-    height: 150px;
-    padding: 18px;
+    max-width: 176px;
+    min-height: 148px;
+    padding: 54px 18px 18px;
   }
 
   .hero-elevator-card {
-    width: 132px;
-    height: 210px;
+    max-width: 132px;
+    min-height: 200px;
+    margin-top: 12px;
   }
 
-  .hero-road-card,
+  .hero-road-card {
+    max-width: 176px;
+    min-height: 110px;
+    margin-left: 8px;
+  }
+
   .hero-travel-card {
-    width: 170px;
-    height: 118px;
+    max-width: 132px;
+    min-height: 120px;
+  }
+
+  .hero-card-name {
+    top: 12px;
+    left: 12px;
+    padding: 6px 10px;
+    font-size: 0.66rem;
+  }
+
+  .hero-solar-sun {
+    width: 46px;
+    height: 46px;
+  }
+
+  .hero-solar-panel {
+    right: 18px;
+    bottom: 18px;
+    width: min(96px, calc(100% - 36px));
+    padding: 8px;
+  }
+
+  .hero-solar-panel span {
+    height: 18px;
+  }
+
+  .hero-elevator-shaft {
+    inset: 42px 14px 14px;
+  }
+
+  .hero-elevator-cabin {
+    top: 48px;
+    left: 22px;
+    right: 22px;
+    height: 46px;
+    border-radius: 14px;
+  }
+
+  .hero-road-surface {
+    inset: 42px 14px 14px;
+    border-radius: 18px;
   }
 
   .hero-road-mark {
-    top: 36px;
-    height: 44px;
+    top: 48px;
+    width: 14px;
+    height: 38px;
+  }
+
+  .hero-road-mark-a {
+    left: calc(36% - 7px);
+  }
+
+  .hero-road-mark-b {
+    left: calc(50% - 7px);
+  }
+
+  .hero-road-mark-c {
+    left: calc(64% - 7px);
+  }
+
+  .hero-route {
+    inset: 46px 18px 18px;
+    border-width: 2px;
+  }
+
+  .hero-route-dot {
+    width: 10px;
+    height: 10px;
+    box-shadow: 0 0 0 4px rgba(42, 153, 106, 0.16);
+  }
+
+  .hero-route-dot-a {
+    left: 22px;
+    top: 52px;
+  }
+
+  .hero-route-dot-b {
+    right: 24px;
+    top: 64px;
+  }
+
+  .hero-route-dot-c {
+    left: 56px;
+    bottom: 20px;
   }
 
   .website-banner div,

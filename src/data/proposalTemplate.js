@@ -41,7 +41,7 @@ export const proposalTemplate = {
     branch: "Kalyani Nagar Branch",
   },
   companyProfile: {
-    heroTitle: "Trusted Energy and Infrastructure Solutions for a Smarter Future",
+    heroTitle: "Reliable Energy. Strong Infrastructure.",
     heroCopy:
       "Deshmukh Infra & Energy Solutions supports rooftop solar, elevator works, road marking, and travel coordination with dependable field execution and responsive service.",
     ownerTitle: "Founder & Operations Lead",

@@ -18,7 +18,7 @@ export const proposalTemplate = {
   },
   supplier: {
     companyName: "Deshmukh Infra & Energy Solutions",
-    contactPerson: "Pratik Deshmukh",
+    contactPerson: "Pratik More",
     phone: "7743935692",
     email: "deshmukhsolarsystems@gmail.com",
     website: "www.deshmukhsolarsystems.com",
@@ -46,7 +46,7 @@ export const proposalTemplate = {
       "Deshmukh Infra & Energy Solutions supports rooftop solar, elevator works, road marking, and travel coordination with dependable field execution and responsive service.",
     ownerTitle: "Founder & Operations Lead",
     ownerSummary:
-      "Pratik Deshmukh leads the business with a hands-on execution model focused on transparent delivery, responsive support, and long-term client relationships.",
+      "Pratik More leads the business with a hands-on execution model focused on transparent delivery, responsive support, and long-term client relationships.",
     aboutTitle: "Built to Serve Real-World Projects",
     aboutCopy:
       "From residential and commercial solar systems to elevator works, road safety marking, and travel coordination, our team supports clients with dependable planning, skilled technicians, and timely execution.",

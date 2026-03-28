@@ -30,6 +30,39 @@ function SearchIcon() {
   );
 }
 
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M7.75 3.5h8.5A4.75 4.75 0 0 1 21 8.25v7.5a4.75 4.75 0 0 1-4.75 4.75h-8.5A4.75 4.75 0 0 1 3 15.75v-7.5A4.75 4.75 0 0 1 7.75 3.5Zm0 1.5A3.25 3.25 0 0 0 4.5 8.25v7.5A3.25 3.25 0 0 0 7.75 19h8.5a3.25 3.25 0 0 0 3.25-3.25v-7.5A3.25 3.25 0 0 0 16.25 5h-8.5Zm8.9 1.4a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M13.24 20.5v-7.18h2.42l.36-2.81h-2.78V8.72c0-.81.22-1.37 1.39-1.37h1.49V4.84c-.26-.03-1.15-.1-2.19-.1-2.17 0-3.65 1.32-3.65 3.75v2.02H8.09v2.81h2.29v7.18h2.86Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function YouTubeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M21.27 7.2a2.95 2.95 0 0 0-2.08-2.08C17.35 4.63 12 4.63 12 4.63s-5.35 0-7.19.49A2.95 2.95 0 0 0 2.73 7.2C2.25 9.04 2.25 12 2.25 12s0 2.96.48 4.8a2.95 2.95 0 0 0 2.08 2.08c1.84.49 7.19.49 7.19.49s5.35 0 7.19-.49a2.95 2.95 0 0 0 2.08-2.08c.48-1.84.48-4.8.48-4.8s0-2.96-.48-4.8ZM10.25 15.12V8.88L15.68 12l-5.43 3.12Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
 function WebsiteBackground() {
   return (
     <div className="website-background" aria-hidden="true">
@@ -150,6 +183,7 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
   const searchInputRef = useRef(null);
 
   const { supplier, companyProfile } = proposal;
+  const currentYear = new Date().getFullYear();
   const companyStats = [
     { label: "Established", value: `Since ${supplier.establishedYear}` },
     { label: "Installed Capacity", value: supplier.installedCapacity },
@@ -233,6 +267,23 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
     companyProfile.history.flatMap((item) => [item.year, item.title, item.copy]),
     normalizedSearch,
   );
+  const socialLinks = [
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/pratikmore4133?igsh=MWxidDNxMGRzaHVk",
+      icon: <InstagramIcon />,
+    },
+    {
+      label: "Facebook",
+      href: "https://www.facebook.com/share/178Bs6e9r2/",
+      icon: <FacebookIcon />,
+    },
+    {
+      label: "YouTube",
+      href: "",
+      icon: <YouTubeIcon />,
+    },
+  ];
 
   useEffect(() => {
     if (isSearchOpen) {
@@ -322,6 +373,7 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
                 onClick={() => setIsSearchOpen((current) => !current)}
               >
                 <SearchIcon />
+                <span className="website-search-toggle-label">Search</span>
               </button>
 
               {isSearchOpen ? (
@@ -551,16 +603,69 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
 
         <section className="website-cta-panel">
           <div>
-            <span>Estimate Studio</span>
-            <h2>The header button stays ready whenever a client wants a quote.</h2>
+            <span>Why Choose Us</span>
+            <h2>Smart energy planning, strong execution, and dependable support for every project.</h2>
             <p>
-              The website now stays cleaner and more standard, while the sticky topbar keeps
-              the `Generate Estimate` action available without repeating it all over the page.
+              Deshmukh Infra & Energy Solutions brings together solar expertise,
+              infrastructure coordination, and responsive field support to deliver
+              projects with safety, clarity, and long-term value. We believe every
+              client deserves honest guidance, quality workmanship, and service that
+              continues even after project completion.
             </p>
-            <div className="website-cta-note">Header shortcut: Generate Estimate</div>
+            <div className="website-cta-note">Trusted execution. Sustainable results.</div>
           </div>
         </section>
       </main>
+
+      <footer className="website-footer">
+        <div className="website-footer-copy">
+          <span>Thank You</span>
+          <h2>Thank you for visiting our website.</h2>
+          <p>
+            We appreciate your time and interest in Deshmukh Infra & Energy Solutions.
+            Our team is committed to delivering reliable service, practical solutions,
+            and long-term support for every client.
+          </p>
+        </div>
+
+        <div className="website-footer-social">
+          <p>Follow Us</p>
+          <div className="website-social-links">
+            {socialLinks.map((item) =>
+              item.href ? (
+                <a
+                  key={item.label}
+                  className="website-social-link"
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={item.label}
+                  title={item.label}
+                >
+                  {item.icon}
+                  <span>{item.label}</span>
+                </a>
+              ) : (
+                <div
+                  key={item.label}
+                  className="website-social-link is-disabled"
+                  aria-label={`${item.label} coming soon`}
+                  title={`${item.label} coming soon`}
+                >
+                  {item.icon}
+                  <span>{item.label}</span>
+                </div>
+              ),
+            )}
+          </div>
+        </div>
+
+        <div className="website-footer-bottom">
+          <p>
+            Copyright {currentYear} {supplier.companyName}. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

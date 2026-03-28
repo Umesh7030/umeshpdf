@@ -1393,11 +1393,13 @@ button {
   padding: 14px;
   border-radius: 30px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 251, 255, 0.9) 100%);
-  border: 1px solid rgba(221, 227, 237, 0.95);
+    radial-gradient(circle at top left, rgba(129, 204, 156, 0.18), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(64, 163, 120, 0.14), transparent 28%),
+    linear-gradient(180deg, rgba(235, 248, 239, 0.96) 0%, rgba(225, 242, 231, 0.92) 100%);
+  border: 1px solid rgba(182, 214, 191, 0.92);
   box-shadow:
-    0 24px 40px rgba(16, 37, 66, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+    0 24px 40px rgba(16, 37, 66, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(18px);
 }
 
@@ -1416,7 +1418,7 @@ button {
 
 .website-topbar-note {
   margin: 0;
-  color: #5f7797;
+  color: #547268;
   font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -1430,10 +1432,10 @@ button {
   padding: 12px 14px;
   border-radius: 24px;
   background:
-    radial-gradient(circle at top left, rgba(255, 205, 114, 0.14), transparent 30%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(245, 249, 255, 0.92) 100%);
-  border: 1px solid rgba(219, 226, 237, 0.92);
-  box-shadow: 0 14px 26px rgba(16, 37, 66, 0.07);
+    radial-gradient(circle at top left, rgba(255, 205, 114, 0.14), transparent 28%),
+    linear-gradient(180deg, rgba(236, 249, 239, 0.96) 0%, rgba(223, 243, 230, 0.92) 100%);
+  border: 1px solid rgba(191, 220, 198, 0.9);
+  box-shadow: 0 14px 26px rgba(16, 37, 66, 0.06);
   color: inherit;
   text-decoration: none;
 }
@@ -1549,7 +1551,7 @@ button {
 }
 
 .website-brand-copy span {
-  color: #5f7797;
+  color: #55766a;
   font-size: 0.9rem;
   line-height: 1.32;
 }
@@ -1561,8 +1563,8 @@ button {
   padding: 6px;
   gap: 10px;
   border-radius: 999px;
-  background: rgba(247, 250, 255, 0.92);
-  border: 1px solid rgba(219, 226, 237, 0.92);
+  background: rgba(227, 243, 232, 0.94);
+  border: 1px solid rgba(190, 219, 198, 0.92);
   box-shadow: 0 12px 22px rgba(16, 37, 66, 0.06);
 }
 
@@ -1590,10 +1592,10 @@ button {
   gap: 8px;
   min-width: 0;
   padding: 0 14px;
-  border: 1px solid rgba(216, 223, 234, 0.92);
-  background: rgba(255, 255, 255, 0.96);
-  color: #163862;
-  box-shadow: 0 10px 18px rgba(16, 37, 66, 0.06);
+  border: 1px solid rgba(191, 219, 198, 0.92);
+  background: rgba(241, 250, 244, 0.96);
+  color: #215046;
+  box-shadow: 0 10px 18px rgba(16, 37, 66, 0.05);
 }
 
 .website-search-toggle svg {
@@ -1628,14 +1630,14 @@ button {
   gap: 10px;
   padding: 12px 14px;
   border-radius: 18px;
-  background: #f7fbff;
-  border: 1px solid rgba(216, 223, 234, 0.9);
+  background: #edf8f0;
+  border: 1px solid rgba(191, 219, 198, 0.9);
 }
 
 .website-search-field svg {
   width: 20px;
   height: 20px;
-  color: #5b7699;
+  color: #5a7d71;
 }
 
 .website-search-field input {
@@ -1658,9 +1660,9 @@ button {
   gap: 4px;
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid rgba(216, 223, 234, 0.86);
+  border: 1px solid rgba(191, 219, 198, 0.86);
   border-radius: 18px;
-  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  background: linear-gradient(180deg, #f7fcf8 0%, #edf8f0 100%);
   color: #163862;
   text-align: left;
   transition:
@@ -1719,9 +1721,9 @@ button {
   flex-wrap: wrap;
   padding: 6px;
   border-radius: 999px;
-  background: rgba(247, 250, 255, 0.9);
-  border: 1px solid rgba(219, 226, 237, 0.92);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  background: rgba(227, 243, 232, 0.92);
+  border: 1px solid rgba(190, 219, 198, 0.92);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .website-nav a {
@@ -1745,8 +1747,8 @@ button {
 }
 
 .website-nav a:hover {
-  background: rgba(255, 255, 255, 0.98);
-  border-color: rgba(216, 223, 234, 0.95);
+  background: rgba(242, 251, 245, 0.98);
+  border-color: rgba(191, 219, 198, 0.95);
   box-shadow: 0 10px 18px rgba(16, 37, 66, 0.06);
 }
 

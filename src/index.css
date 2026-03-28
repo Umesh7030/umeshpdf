@@ -1805,9 +1805,9 @@ button {
   align-items: center;
   padding: 10px 14px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(216, 223, 234, 0.9);
-  color: #163862;
+  background: rgba(229, 245, 235, 0.88);
+  border: 1px solid rgba(182, 214, 191, 0.9);
+  color: #2d8b73;
   font-size: 0.84rem;
   font-weight: 700;
   box-shadow: 0 12px 20px rgba(16, 37, 66, 0.06);

@@ -5,6 +5,7 @@ import EstimatorStudio from "./components/EstimatorStudio";
 import { createProposalDraft } from "./data/proposalTemplate";
 import ElevatorCustomerForm from "./pages/ElevatorCustomerForm";
 import ElevatorEstimateAdmin from "./pages/ElevatorEstimateAdmin";
+import LoginPage from "./pages/LoginPage";
 import RoleSelection from "./pages/RoleSelection";
 import SolarCustomerForm from "./pages/SolarCustomerForm";
 import TravelCustomerForm from "./pages/TravelCustomerForm";
@@ -154,8 +155,9 @@ export default function App() {
 
   return (
     <Routes>
+      <Route path="/" element={<LoginPage />} />
       <Route
-        path="/"
+        path="/home"
         element={
           <CompanyWebsite
             proposal={proposal}
@@ -170,7 +172,7 @@ export default function App() {
           <EstimatorStudio
             derived={derived}
             isGenerating={isGenerating}
-            onBack={() => navigate("/")}
+            onBack={() => navigate("/home")}
             onDownload={handleDownload}
             onGenerate={handleGenerate}
             onReset={handleReset}

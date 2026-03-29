@@ -26,7 +26,14 @@ export default function Button({
 
   return (
     <button type={type} className={buttonClassName} disabled={disabled || isLoading} {...props}>
-      {isLoading ? loadingLabel : children}
+      {isLoading ? (
+        <span className="button-loading-content">
+          <span className="button-spinner" aria-hidden="true" />
+          <span>{loadingLabel}</span>
+        </span>
+      ) : (
+        children
+      )}
     </button>
   );
 }

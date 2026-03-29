@@ -3,7 +3,7 @@ import Button from "./Button";
 
 export default function ServicePageLayout({
   backLabel = "Back to Website",
-  backTo = "/",
+  backTo = "/home",
   children,
   description,
   eyebrow,

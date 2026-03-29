@@ -9,7 +9,7 @@ export default function RoleSelection() {
   const serviceFlow = getServiceFlow(serviceKey);
 
   if (!serviceFlow) {
-    return <Navigate replace to="/" />;
+    return <Navigate replace to="/home" />;
   }
 
   const roles = Object.entries(serviceFlow.roles);
@@ -20,7 +20,7 @@ export default function RoleSelection() {
       eyebrow={serviceFlow.eyebrow}
       title={serviceFlow.title}
       description={serviceFlow.description}
-      backTo="/"
+      backTo="/home"
       backLabel="Back"
     >
       <section className="service-form-card role-selection-panel">

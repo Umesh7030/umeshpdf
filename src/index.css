@@ -35,7 +35,8 @@ body {
 
 button,
 input,
-textarea {
+textarea,
+select {
   font: inherit;
 }
 
@@ -269,7 +270,8 @@ button {
 }
 
 .field input,
-.field textarea {
+.field textarea,
+.field select {
   width: 100%;
   border: 1px solid rgba(216, 223, 234, 0.95);
   border-radius: 14px;
@@ -284,7 +286,8 @@ button {
 }
 
 .field input:focus,
-.field textarea:focus {
+.field textarea:focus,
+.field select:focus {
   border-color: rgba(242, 140, 40, 0.62);
   box-shadow: 0 0 0 4px rgba(242, 140, 40, 0.12);
 }
@@ -292,6 +295,73 @@ button {
 .field textarea {
   resize: vertical;
   min-height: 96px;
+}
+
+.field-help,
+.field-error {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.field-help {
+  color: var(--muted);
+}
+
+.field-error {
+  color: #b33a3a;
+}
+
+.field-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.field-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(216, 223, 234, 0.95);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.field-option:hover {
+  transform: translateY(-1px);
+  border-color: rgba(28, 79, 146, 0.18);
+  box-shadow: 0 12px 22px rgba(16, 37, 66, 0.06);
+}
+
+.field-option.is-selected {
+  border-color: rgba(242, 140, 40, 0.42);
+  box-shadow: 0 0 0 1px rgba(242, 140, 40, 0.16);
+}
+
+.field-option-input {
+  margin: 4px 0 0;
+  accent-color: var(--accent);
+}
+
+.field-option-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.field-option-copy strong {
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.field-option-copy small {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
 }
 
 .subeditor + .subeditor {
@@ -1572,6 +1642,7 @@ button {
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   padding: 6px;
   gap: 10px;
   border-radius: 999px;
@@ -2252,6 +2323,32 @@ button {
   background: linear-gradient(180deg, #f8fcf9 0%, #edf8f0 100%);
   border: 1px solid rgba(191, 220, 198, 0.86);
   overflow: hidden;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(58, 155, 126, 0.34);
+  box-shadow: 0 18px 30px rgba(45, 106, 86, 0.09);
+}
+
+button.service-card {
+  width: 100%;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+}
+
+.service-card.is-clickable {
+  cursor: pointer;
+}
+
+.service-card.is-clickable:focus-visible {
+  outline: 3px solid rgba(79, 169, 137, 0.32);
+  outline-offset: 3px;
 }
 
 .service-card-label {
@@ -2277,6 +2374,17 @@ button {
   color: var(--website-text-soft);
   font-size: 0.95rem;
   line-height: 1.64;
+}
+
+.service-card-action {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 18px;
+  color: var(--website-accent);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .service-motion {
@@ -2862,13 +2970,12 @@ button {
   }
 
   .website-toolbar {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
+    display: flex;
     justify-content: stretch;
   }
 
   .website-search {
+    width: 100%;
     min-width: 0;
     flex: 1 1 auto;
   }
@@ -3339,7 +3446,7 @@ button {
 
 @media (max-width: 560px) {
   .website-toolbar {
-    grid-template-columns: auto 1fr;
+    width: 100%;
   }
 
   .website-search-toggle {
@@ -3359,5 +3466,245 @@ button {
 
   .website-nav a {
     font-size: 0.84rem;
+  }
+}
+
+.app-button.button-full {
+  width: 100%;
+}
+
+.service-page-shell {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 18px 24px 40px;
+}
+
+.service-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 24px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(216, 223, 234, 0.9);
+  box-shadow: var(--shadow);
+}
+
+.service-page-header h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.7rem);
+  line-height: 1.02;
+}
+
+.service-page-copy {
+  max-width: 760px;
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.68;
+}
+
+.service-page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.service-page-main {
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.service-form-card {
+  width: min(760px, 100%);
+  padding: 30px 32px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(216, 223, 234, 0.9);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.service-form-heading h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+}
+
+.service-form-heading p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.62;
+}
+
+.service-form {
+  margin-top: 24px;
+}
+
+.service-form-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.service-form-grid.two-column {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.service-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.role-selection-panel {
+  width: min(920px, 100%);
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.role-card {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  border-radius: 26px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6fbf8 100%);
+  border: 1px solid rgba(191, 220, 198, 0.9);
+  box-shadow: 0 18px 30px rgba(45, 106, 86, 0.08);
+}
+
+.role-card.is-disabled {
+  opacity: 0.72;
+}
+
+.role-card-label {
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(79, 169, 137, 0.12);
+  color: var(--website-accent);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.role-card h3 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+}
+
+.role-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.vehicle-suggestion-card {
+  margin-top: 8px;
+  padding: 18px 20px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(79, 169, 137, 0.12) 0%, rgba(28, 79, 146, 0.08) 100%);
+  border: 1px solid rgba(79, 169, 137, 0.18);
+}
+
+.vehicle-suggestion-card span {
+  display: block;
+  color: var(--website-accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.vehicle-suggestion-card strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+}
+
+.vehicle-suggestion-card p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(16, 37, 66, 0.34);
+  backdrop-filter: blur(10px);
+}
+
+.modal-card {
+  width: min(460px, 100%);
+  padding: 28px;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(216, 223, 234, 0.9);
+  box-shadow: 0 26px 52px rgba(16, 37, 66, 0.2);
+}
+
+.modal-card h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+}
+
+.modal-card p:last-of-type {
+  margin: 14px 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 22px;
+}
+
+@media (max-width: 980px) {
+  .service-page-shell {
+    padding: 14px;
+  }
+
+  .service-page-header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+    border-radius: 26px;
+  }
+
+  .service-page-header-actions {
+    justify-content: flex-start;
+  }
+
+  .service-form-card {
+    padding: 24px;
+    border-radius: 28px;
+  }
+
+  .service-form-grid.two-column,
+  .field-options,
+  .role-grid {
+    grid-template-columns: 1fr;
   }
 }

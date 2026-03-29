@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { interactiveServiceKeys } from "../data/serviceFlows";
 
 function CompanyStat({ label, value }) {
   return (
@@ -149,16 +150,33 @@ function ServiceMotion({ accent }) {
   );
 }
 
-function ServiceCard({ id, isHighlighted, service }) {
-  return (
-    <article
-      id={id}
-      className={`service-card website-search-target ${isHighlighted ? "is-highlighted" : ""}`.trim()}
-    >
+function ServiceCard({ id, isHighlighted, onClick, service }) {
+  const isClickable = typeof onClick === "function";
+  const className =
+    `service-card website-search-target ${isHighlighted ? "is-highlighted" : ""} ${
+      isClickable ? "is-clickable" : ""
+    }`.trim();
+  const content = (
+    <>
       <ServiceMotion accent={service.accent} />
       <span className="service-card-label">{service.shortLabel}</span>
       <h3>{service.title}</h3>
       <p>{service.description}</p>
+      {isClickable ? <span className="service-card-action">Select role</span> : null}
+    </>
+  );
+
+  if (isClickable) {
+    return (
+      <button id={id} type="button" className={className} onClick={onClick}>
+        {content}
+      </button>
+    );
+  }
+
+  return (
+    <article id={id} className={className}>
+      {content}
     </article>
   );
 }
@@ -176,7 +194,7 @@ function HistoryCard({ id, isHighlighted, item }) {
   );
 }
 
-export default function CompanyWebsite({ proposal, onStartEstimate }) {
+export default function CompanyWebsite({ proposal, onOpenService }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const searchRef = useRef(null);
@@ -223,14 +241,6 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
       copy: item.copy,
       type: "History",
     })),
-    {
-      id: "estimate-studio",
-      title: "Generate Estimate",
-      subtitle: "Proposal Studio",
-      copy: "Open the estimate workflow for a client-ready proposal.",
-      type: "Action",
-      action: onStartEstimate,
-    },
   ];
   const searchResults = normalizedSearch
     ? searchTargets
@@ -318,11 +328,6 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
 
   const handleSearchSelect = (target) => {
     setIsSearchOpen(false);
-
-    if (target.action) {
-      target.action();
-      return;
-    }
 
     const element = document.getElementById(target.id);
     element?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -416,9 +421,6 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
               ) : null}
             </div>
 
-            <button type="button" className="website-nav-cta" onClick={onStartEstimate}>
-              Generate Estimate
-            </button>
           </div>
         </div>
 
@@ -564,7 +566,7 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
           <SectionHeading
             eyebrow="Core Services"
             title="Execution That Covers More Than One Industry"
-            copy="A modern public website for the company, while the estimate generator stays available when the user is ready."
+            copy="Choose a service to continue as admin or customer, while keeping the public website experience clean and simple."
           />
 
           <div className="service-grid">
@@ -576,6 +578,11 @@ export default function CompanyWebsite({ proposal, onStartEstimate }) {
                   [service.title, service.shortLabel, service.description],
                   normalizedSearch,
                 )}
+                onClick={
+                  interactiveServiceKeys.includes(service.accent)
+                    ? () => onOpenService(service.accent)
+                    : undefined
+                }
                 service={service}
               />
             ))}

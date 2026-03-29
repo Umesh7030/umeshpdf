@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import CompanyWebsite from "./components/CompanyWebsite";
-import EditorPanel from "./components/EditorPanel";
-import ProposalPreview from "./components/ProposalPreview";
+import EstimatorStudio from "./components/EstimatorStudio";
 import { createProposalDraft } from "./data/proposalTemplate";
+import ElevatorCustomerForm from "./pages/ElevatorCustomerForm";
+import ElevatorEstimateAdmin from "./pages/ElevatorEstimateAdmin";
+import RoleSelection from "./pages/RoleSelection";
+import SolarCustomerForm from "./pages/SolarCustomerForm";
+import TravelCustomerForm from "./pages/TravelCustomerForm";
 import {
   buildCommercialSummary,
   buildFileName,
@@ -16,9 +21,9 @@ export default function App() {
   );
   const [isGenerating, setIsGenerating] = useState(false);
   const [pdfBlob, setPdfBlob] = useState(null);
-  const [mobilePanel, setMobilePanel] = useState("editor");
-  const [appView, setAppView] = useState("website");
   const previewRef = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const commercial = buildCommercialSummary(proposal.commercial);
   const savings = buildSavingsSummary(proposal, commercial);
@@ -30,7 +35,7 @@ export default function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [appView]);
+  }, [location.pathname]);
 
   const renderProposalPdf = async () => {
     if (!previewRef.current) {
@@ -147,80 +152,41 @@ export default function App() {
     setStatusMessage("Proposal template reset to the locked company profile and default client values.");
   };
 
-  const openEstimator = () => {
-    setMobilePanel("editor");
-    setAppView("estimator");
-  };
-
-  if (appView === "website") {
-    return (
-      <CompanyWebsite proposal={proposal} onStartEstimate={openEstimator} />
-    );
-  }
-
   return (
-    <div className="estimator-shell">
-      <header className="estimator-topbar">
-        <div>
-          <p className="eyebrow">Estimate Studio</p>
-          <h1>{proposal.supplier.companyName}</h1>
-        </div>
-        <div className="estimator-topbar-actions">
-          <button type="button" className="ghost-button" onClick={() => setAppView("website")}>
-            Back to Website
-          </button>
-        </div>
-      </header>
-
-      <main className="app-shell">
-        <div className="mobile-panel-switch" aria-label="Mobile view switch">
-          <button
-            type="button"
-            className={`mobile-panel-button ${mobilePanel === "editor" ? "is-active" : ""}`.trim()}
-            onClick={() => setMobilePanel("editor")}
-          >
-            Edit
-          </button>
-          <button
-            type="button"
-            className={`mobile-panel-button ${mobilePanel === "preview" ? "is-active" : ""}`.trim()}
-            onClick={() => setMobilePanel("preview")}
-          >
-            Preview
-          </button>
-        </div>
-
-        <div className={`editor-region ${mobilePanel === "editor" ? "mobile-active" : ""}`.trim()}>
-          <EditorPanel
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <CompanyWebsite
+            proposal={proposal}
+            onOpenService={(serviceKey) => navigate(`/services/${serviceKey}`)}
+          />
+        }
+      />
+      <Route path="/services/:serviceKey" element={<RoleSelection />} />
+      <Route
+        path="/solar/admin"
+        element={
+          <EstimatorStudio
+            derived={derived}
+            isGenerating={isGenerating}
+            onBack={() => navigate("/")}
+            onDownload={handleDownload}
+            onGenerate={handleGenerate}
+            onReset={handleReset}
+            onShare={handleShare}
+            previewRef={previewRef}
             proposal={proposal}
             setProposal={setProposal}
-            derived={derived}
             statusMessage={statusMessage}
-            isGenerating={isGenerating}
-            onGenerate={handleGenerate}
-            onDownload={handleDownload}
-            onShare={handleShare}
-            onReset={handleReset}
           />
-        </div>
-
-        <div className={`preview-region ${mobilePanel === "preview" ? "mobile-active" : ""}`.trim()}>
-          <div className="preview-shell">
-            <div className="preview-header">
-              <div>
-                <p className="eyebrow">Live Preview</p>
-                <h2>Client-ready solar proposal</h2>
-                <p>
-                  Every client detail, BOM update, and price change is reflected here
-                  before you generate the final PDF.
-                </p>
-              </div>
-            </div>
-
-            <ProposalPreview previewRef={previewRef} proposal={proposal} derived={derived} />
-          </div>
-        </div>
-      </main>
-    </div>
-   );
+        }
+      />
+      <Route path="/solar/customer" element={<SolarCustomerForm />} />
+      <Route path="/elevator/admin" element={<ElevatorEstimateAdmin />} />
+      <Route path="/elevator/customer" element={<ElevatorCustomerForm />} />
+      <Route path="/travel/customer" element={<TravelCustomerForm />} />
+      <Route path="*" element={<Navigate replace to="/" />} />
+    </Routes>
+  );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 import LoginForm from "../components/LoginForm";
 import SignupForm from "../components/SignupForm";
 import { isValidMobileNumber, validateRequiredFields, wait } from "../utils/formHelpers";
@@ -175,51 +176,55 @@ export default function LoginPage() {
       <div className="login-page-shape login-shape-b" aria-hidden="true" />
       <div className="login-page-shape login-shape-c" aria-hidden="true" />
 
-      <div className="login-page-content">
-        <section className="welcome-panel">
-          <span className="welcome-badge">Welcome Portal</span>
-          <h1>Welcome to Deshmukh Infra &amp; Energy Solutions</h1>
-          <p className="welcome-subtitle">
-            Solar | Elevator | Road Marking | Tours &amp; Travels
-          </p>
-          <p className="welcome-copy">
-            Sign in to access the company website, role-based service flows, and the
-            proposal tools from one clean dashboard.
-          </p>
+      <div className="login-page-stage">
+        <div className="login-page-content">
+          <section className="welcome-panel">
+            <span className="welcome-badge">Welcome Portal</span>
+            <h1>Welcome to Deshmukh Infra &amp; Energy Solutions</h1>
+            <p className="welcome-subtitle">
+              Solar | Elevator | Road Marking | Tours &amp; Travels
+            </p>
+            <p className="welcome-copy">
+              Sign in to access the company website, role-based service flows, and the
+              proposal tools from one clean dashboard.
+            </p>
 
-          <div className="welcome-highlights">
-            <span>Modern Service Portal</span>
-            <span>Fast Estimate Access</span>
-            <span>Secure Demo Login</span>
-          </div>
-        </section>
+            <div className="welcome-highlights">
+              <span>Modern Service Portal</span>
+              <span>Fast Estimate Access</span>
+              <span>Secure Demo Login</span>
+            </div>
+          </section>
 
-        <section className="auth-card-shell">
-          <div className="auth-card" key={mode}>
-            {mode === "login" ? (
-              <LoginForm
-                formData={loginForm}
-                feedbackMessage={feedbackMessage}
-                feedbackTone={feedbackTone}
-                isLoading={isLoading}
-                onFieldChange={handleLoginFieldChange}
-                onSubmit={handleLoginSubmit}
-                onSwitchToSignup={switchToSignup}
-              />
-            ) : (
-              <SignupForm
-                formData={signupForm}
-                feedbackMessage={feedbackMessage}
-                feedbackTone={feedbackTone}
-                isLoading={isLoading}
-                onFieldChange={handleSignupFieldChange}
-                onSubmit={handleSignupSubmit}
-                onSwitchToLogin={switchToLogin}
-              />
-            )}
-          </div>
-        </section>
+          <section className="auth-card-shell">
+            <div className="auth-card" key={mode}>
+              {mode === "login" ? (
+                <LoginForm
+                  formData={loginForm}
+                  feedbackMessage={feedbackMessage}
+                  feedbackTone={feedbackTone}
+                  isLoading={isLoading}
+                  onFieldChange={handleLoginFieldChange}
+                  onSubmit={handleLoginSubmit}
+                  onSwitchToSignup={switchToSignup}
+                />
+              ) : (
+                <SignupForm
+                  formData={signupForm}
+                  feedbackMessage={feedbackMessage}
+                  feedbackTone={feedbackTone}
+                  isLoading={isLoading}
+                  onFieldChange={handleSignupFieldChange}
+                  onSubmit={handleSignupSubmit}
+                  onSwitchToLogin={switchToLogin}
+                />
+              )}
+            </div>
+          </section>
+        </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

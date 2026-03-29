@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { interactiveServiceKeys } from "../data/serviceFlows";
+import { socialLinks as sharedSocialLinks } from "../data/socialLinks";
 
 function CompanyStat({ label, value }) {
   return (
@@ -296,19 +297,19 @@ export default function CompanyWebsite({ proposal, onOpenService }) {
     {
       platform: "instagram",
       label: "Instagram",
-      href: "https://www.instagram.com/pratikmore4133?igsh=MWxidDNxMGRzaHVk",
+      href: sharedSocialLinks.instagram,
       icon: <InstagramIcon />,
     },
     {
       platform: "facebook",
       label: "Facebook",
-      href: "https://www.facebook.com/share/178Bs6e9r2/",
+      href: sharedSocialLinks.facebook,
       icon: <FacebookIcon />,
     },
     {
       platform: "youtube",
       label: "YouTube",
-      href: "",
+      href: sharedSocialLinks.youtube,
       icon: <YouTubeIcon />,
     },
   ];

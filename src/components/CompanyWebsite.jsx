@@ -380,6 +380,9 @@ export default function CompanyWebsite({ proposal, onOpenService }) {
             <div className="website-brand-copy">
               <p>{supplier.companyName}</p>
               <span>{supplier.serviceCoverage}</span>
+              <small>
+                Since {supplier.establishedYear} • {supplier.supportAvailability}
+              </small>
             </div>
           </a>
 
@@ -396,7 +399,10 @@ export default function CompanyWebsite({ proposal, onOpenService }) {
                 onClick={() => setIsSearchOpen((current) => !current)}
               >
                 <SearchIcon />
-                <span className="website-search-toggle-label">Search</span>
+                <span className="website-search-toggle-copy">
+                  <span className="website-search-toggle-label">Search Website</span>
+                  <small className="website-search-toggle-hint">Services, history, owner</small>
+                </span>
               </button>
 
               {isSearchOpen ? (

@@ -1979,6 +1979,31 @@ button {
   border: 1px solid var(--website-border);
   box-shadow: 0 20px 40px rgba(45, 106, 86, 0.12);
   overflow: hidden;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+button.hero-visual-card {
+  color: inherit;
+  text-align: left;
+  font: inherit;
+}
+
+.hero-visual-card.is-clickable {
+  cursor: pointer;
+}
+
+.hero-visual-card.is-clickable:hover {
+  transform: translateY(-4px);
+  border-color: rgba(58, 155, 126, 0.34);
+  box-shadow: 0 24px 44px rgba(45, 106, 86, 0.16);
+}
+
+.hero-visual-card.is-clickable:focus-visible {
+  outline: 3px solid rgba(79, 169, 137, 0.32);
+  outline-offset: 3px;
 }
 
 .hero-card-name {
@@ -3610,6 +3635,63 @@ button.service-card {
   line-height: 1.65;
 }
 
+.role-selection-visual {
+  position: relative;
+  margin-top: 16px;
+  min-height: 190px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(191, 220, 198, 0.9);
+  box-shadow: 0 18px 30px rgba(45, 106, 86, 0.08);
+  background: #dbe7ee;
+}
+
+.role-selection-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.role-selection-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 21, 37, 0.08) 0%, rgba(8, 21, 37, 0.68) 100%);
+}
+
+.role-selection-visual-copy {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1;
+  display: grid;
+  gap: 8px;
+  color: #ffffff;
+}
+
+.role-selection-visual-copy span {
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.role-selection-visual-copy strong {
+  max-width: 560px;
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  line-height: 1.3;
+}
+
 .vehicle-suggestion-card {
   margin-top: 8px;
   padding: 18px 20px;
@@ -3706,5 +3788,119 @@ button.service-card {
   .field-options,
   .role-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 980px) {
+  .role-selection-page {
+    min-height: 100vh;
+    padding: 10px 12px 14px;
+  }
+
+  .role-selection-page .service-page-header {
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 22px;
+  }
+
+  .role-selection-page .eyebrow {
+    margin-bottom: 4px;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+  }
+
+  .role-selection-page .service-page-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .role-selection-page .service-page-copy {
+    margin-top: 8px;
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .role-selection-page .service-page-header-actions .ghost-button {
+    min-height: 40px;
+    padding: 10px 14px;
+  }
+
+  .role-selection-page .service-page-main {
+    margin-top: 12px;
+  }
+
+  .role-selection-page .service-form-card {
+    padding: 16px;
+    border-radius: 22px;
+  }
+
+  .role-selection-page .service-form-heading h2 {
+    font-size: 1.35rem;
+  }
+
+  .role-selection-page .service-form-heading p {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    line-height: 1.42;
+  }
+
+  .role-selection-page .role-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .role-selection-page .role-card {
+    gap: 10px;
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  .role-selection-page .role-card-label {
+    padding: 6px 9px;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+  }
+
+  .role-selection-page .role-card h3 {
+    font-size: 1.08rem;
+  }
+
+  .role-selection-page .role-card p {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.84rem;
+    line-height: 1.4;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .role-selection-page .role-card .app-button {
+    min-height: 40px;
+    padding: 10px 12px;
+    font-size: 0.88rem;
+  }
+
+  .role-selection-page .role-selection-visual {
+    margin-top: 12px;
+    min-height: 132px;
+    border-radius: 18px;
+  }
+
+  .role-selection-page .role-selection-visual-copy {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    gap: 6px;
+  }
+
+  .role-selection-page .role-selection-visual-copy span {
+    padding: 5px 8px;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+
+  .role-selection-page .role-selection-visual-copy strong {
+    font-size: 0.86rem;
+    line-height: 1.28;
   }
 }

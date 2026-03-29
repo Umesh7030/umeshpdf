@@ -2,16 +2,16 @@ export const serviceFlows = {
   solar: {
     title: "Solar Solutions",
     eyebrow: "Solar Workflow",
-    description: "Choose the path that fits your solar requirement and continue to the right page.",
+    description: "Choose Admin or Customer to continue with solar.",
     roles: {
       admin: {
         label: "Admin",
-        description: "Open the existing solar estimate studio and generate a client-ready proposal.",
+        description: "Open the solar estimate studio.",
         path: "/solar/admin",
       },
       customer: {
         label: "Customer",
-        description: "Submit your solar requirement so our team can connect with you.",
+        description: "Submit your solar requirement.",
         path: "/solar/customer",
       },
     },
@@ -19,16 +19,16 @@ export const serviceFlows = {
   elevator: {
     title: "Elevator Service & Installation",
     eyebrow: "Elevator Workflow",
-    description: "Continue as admin for estimate preparation or as customer for a quick request form.",
+    description: "Choose Admin or Customer to continue with elevator service.",
     roles: {
       admin: {
         label: "Admin",
-        description: "Prepare an elevator estimate with project details, scope components, and cost.",
+        description: "Prepare the elevator estimate.",
         path: "/elevator/admin",
       },
       customer: {
         label: "Customer",
-        description: "Share your elevator requirement and our team will reach out shortly.",
+        description: "Share your elevator requirement.",
         path: "/elevator/customer",
       },
     },
@@ -36,16 +36,16 @@ export const serviceFlows = {
   travel: {
     title: "Tours & Travels",
     eyebrow: "Travel Workflow",
-    description: "Choose the right journey flow for your travel request.",
+    description: "Choose your role to continue with travel service.",
     roles: {
       admin: {
         label: "Admin",
-        description: "Travel admin estimate workflow is reserved for a later update.",
+        description: "Travel admin flow will be added later.",
         disabled: true,
       },
       customer: {
         label: "Customer",
-        description: "Enter trip details and get a vehicle suggestion instantly.",
+        description: "Enter trip details and get a vehicle suggestion.",
         path: "/travel/customer",
       },
     },

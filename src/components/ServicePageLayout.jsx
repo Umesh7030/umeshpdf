@@ -7,13 +7,16 @@ export default function ServicePageLayout({
   children,
   description,
   eyebrow,
+  headerClassName = "",
+  mainClassName = "",
+  pageClassName = "",
   title,
 }) {
   const navigate = useNavigate();
 
   return (
-    <div className="service-page-shell">
-      <header className="service-page-header">
+    <div className={["service-page-shell", pageClassName].filter(Boolean).join(" ")}>
+      <header className={["service-page-header", headerClassName].filter(Boolean).join(" ")}>
         <div>
           <p className="eyebrow">{eyebrow}</p>
           <h1>{title}</h1>
@@ -27,7 +30,9 @@ export default function ServicePageLayout({
         </div>
       </header>
 
-      <main className="service-page-main">{children}</main>
+      <main className={["service-page-main", mainClassName].filter(Boolean).join(" ")}>
+        {children}
+      </main>
     </div>
   );
 }

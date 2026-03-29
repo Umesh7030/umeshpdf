@@ -16,15 +16,17 @@ export default function RoleSelection() {
 
   return (
     <ServicePageLayout
+      pageClassName="role-selection-page"
       eyebrow={serviceFlow.eyebrow}
       title={serviceFlow.title}
       description={serviceFlow.description}
       backTo="/"
+      backLabel="Back"
     >
       <section className="service-form-card role-selection-panel">
         <div className="service-form-heading">
           <h2>Select Your Role</h2>
-          <p>Continue with the workflow that best matches how you want to proceed.</p>
+          <p>Pick how you want to continue.</p>
         </div>
 
         <div className="role-grid">
@@ -42,10 +44,21 @@ export default function RoleSelection() {
                 disabled={role.disabled}
                 onClick={() => role.path && navigate(role.path)}
               >
-                {role.disabled ? "Coming Soon" : `Continue as ${role.label}`}
+                {role.disabled ? "Soon" : "Continue"}
               </Button>
             </article>
           ))}
+        </div>
+
+        <div className="role-selection-visual">
+          <img
+            src="/images/client-support-team.jpg"
+            alt="Customer support executive discussing service options with a client"
+          />
+          <div className="role-selection-visual-copy">
+            <span>Client Support</span>
+            <strong>Clear discussions, quick guidance, and practical help for every enquiry.</strong>
+          </div>
         </div>
       </section>
     </ServicePageLayout>

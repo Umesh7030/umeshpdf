@@ -181,6 +181,21 @@ function ServiceCard({ id, isHighlighted, onClick, service }) {
   );
 }
 
+function HeroVisualCard({ ariaLabel, children, className, onClick }) {
+  const isClickable = typeof onClick === "function";
+  const cardClassName = `hero-visual-card ${className} ${isClickable ? "is-clickable" : ""}`.trim();
+
+  if (isClickable) {
+    return (
+      <button type="button" className={cardClassName} onClick={onClick} aria-label={ariaLabel}>
+        {children}
+      </button>
+    );
+  }
+
+  return <div className={cardClassName}>{children}</div>;
+}
+
 function HistoryCard({ id, isHighlighted, item }) {
   return (
     <article
@@ -457,7 +472,11 @@ export default function CompanyWebsite({ proposal, onOpenService }) {
             <div className="hero-orbit hero-orbit-sun" />
             <div className="hero-orbit hero-orbit-travel" />
 
-            <div className="hero-visual-card hero-solar-card">
+            <HeroVisualCard
+              className="hero-solar-card"
+              ariaLabel="Open Solar Solutions"
+              onClick={() => onOpenService("solar")}
+            >
               <span className="hero-card-name">{heroServiceLabels.solar ?? "Solar"}</span>
               <div className="hero-solar-sun" />
               <div className="hero-solar-panel">
@@ -466,29 +485,37 @@ export default function CompanyWebsite({ proposal, onOpenService }) {
                 <span />
                 <span />
               </div>
-            </div>
+            </HeroVisualCard>
 
-            <div className="hero-visual-card hero-elevator-card">
+            <HeroVisualCard
+              className="hero-elevator-card"
+              ariaLabel="Open Elevator Service and Installation"
+              onClick={() => onOpenService("elevator")}
+            >
               <span className="hero-card-name">{heroServiceLabels.elevator ?? "Elevator"}</span>
               <div className="hero-elevator-shaft" />
               <div className="hero-elevator-cabin" />
-            </div>
+            </HeroVisualCard>
 
-            <div className="hero-visual-card hero-road-card">
+            <HeroVisualCard className="hero-road-card">
               <span className="hero-card-name">{heroServiceLabels.road ?? "Road"}</span>
               <div className="hero-road-surface" />
               <div className="hero-road-mark hero-road-mark-a" />
               <div className="hero-road-mark hero-road-mark-b" />
               <div className="hero-road-mark hero-road-mark-c" />
-            </div>
+            </HeroVisualCard>
 
-            <div className="hero-visual-card hero-travel-card">
+            <HeroVisualCard
+              className="hero-travel-card"
+              ariaLabel="Open Tours and Travels"
+              onClick={() => onOpenService("travel")}
+            >
               <span className="hero-card-name">{heroServiceLabels.travel ?? "Travel"}</span>
               <div className="hero-route" />
               <div className="hero-route-dot hero-route-dot-a" />
               <div className="hero-route-dot hero-route-dot-b" />
               <div className="hero-route-dot hero-route-dot-c" />
-            </div>
+            </HeroVisualCard>
           </div>
         </section>
 

@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { socialLinks } from "../data/socialLinks";
 
 const footerLinks = [
@@ -17,12 +17,24 @@ const footerLinks = [
     icon: FaYoutube,
     label: "YouTube",
   },
+  {
+    href: socialLinks.whatsapp,
+    icon: FaWhatsapp,
+    label: "WhatsApp",
+  },
 ];
 
 export default function Footer() {
   return (
     <footer className="login-footer">
-      <p>&copy; All Rights Reserved</p>
+      <div className="login-footer-copy">
+        <p>&copy; All Rights Reserved</p>
+        <small>Toll Free: 7743935692</small>
+        <small className="login-footer-message">
+          Reliable solutions and responsive support for every client.
+        </small>
+        <span>Follow us on</span>
+      </div>
 
       <div className="login-footer-icons">
         {footerLinks.map((item) => {
